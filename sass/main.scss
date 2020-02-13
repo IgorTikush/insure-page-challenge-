@@ -1,0 +1,575 @@
+
+
+// ### Primary
+//### Primar
+
+$color-primary-violet: hsl(256, 26%, 20%);
+$color-primary-blue: hsl(216, 30%, 68%);
+
+//### Accent
+
+$color-neutral-violet: hsl(270, 9%, 17%);
+$color-neutral-grayishViolet: hsl(273, 4%, 51%);
+$color-neutral-light-grey: hsl(0, 0%, 98%);
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 100%; // 10rem = 10px
+    font-family: raleway;
+
+
+}
+
+body {
+    font-family: 'Karla', sans-serif;
+    text-align: center;
+    overflow: visible;
+
+    @media only screen and (min-width: 62.5em) {
+        
+        text-align: left;
+    }
+}
+
+
+h1,
+h2 {
+    font-family: 'DM Serif Display';
+    letter-spacing: .1rem;
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 3rem;
+
+    @media only screen and (min-width: 62.5em) {
+        padding: 0 8rem 0 0;
+        text-align: left;
+        font-size: 3.8rem;
+    }
+}
+
+h2 {
+    font-size: 1.8rem;
+    letter-spacing: 0;
+}
+
+p {
+    padding: 1.2rem .4rem;
+    line-height: 1.6rem;
+    font-size: 1rem;
+    @media only screen and (min-width: 62.5em) {
+        padding: 1rem 3rem 2rem 0;
+        text-align: left;
+    }
+}
+
+.btn { 
+    border: solid white;
+    border-width: 2px;
+    color: white;
+    background-color: transparent;
+    padding: .7rem 1.5rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    
+
+    &:hover,
+    &:active {
+       background-color: white;
+       color: black;
+       cursor: pointer;
+
+    }
+}
+
+.header {
+    height: 5rem;
+    padding-top: 1.5rem;
+    padding-left: 2rem;
+    text-align: left;
+
+    &__logo {
+        margin-right: auto;
+        height: 1rem;
+    }
+
+    @media only screen and (min-width: 62.5em) {
+        padding: 1.5rem 8rem;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.navigation {
+    &__checkbox {
+        display: none;
+    }
+   
+
+    &__button {
+       
+        height: 2rem;
+        width: 2rem;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 2000;
+        text-align: center;
+        cursor: pointer;
+        border: solid black;
+        border-width: 2px;
+        @media only screen and (min-width: 62.5em) {
+            display: none;
+        }
+    }
+
+    
+
+    &__nav {
+     
+        background-color: $color-primary-violet;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1500;
+        margin-top: 4rem;
+
+        opacity: 0;
+        width: 0;
+        margin-left: -1000px;
+
+        background-image: url(../images/bg-pattern-mobile-nav.svg);
+        background-repeat: no-repeat;
+        background-position: 0 95%;
+        background-size: contain;;
+
+        @media only screen and (min-width: 62.5em) {
+            width: 30rem;
+            margin-left: 0;
+            opacity: 1;
+            height: 100%;
+            position: relative;
+            margin-top: 0;
+            background-image: none;
+            background-color: transparent;
+        }
+        
+    }
+
+    &__list {
+        position: absolute;
+        
+        list-style: none;
+        text-align: center;
+        width: 100%;
+
+        @media only screen and (min-width: 62.5em) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+           
+        }
+        
+    }
+
+    &__item {
+        margin: 1rem;
+        @media only screen and (min-width: 62.5em) {
+            margin: 0;
+        }
+    }
+
+    &__link {
+        &__btn {
+            font-size: 1.5rem;
+
+            @media only screen and (min-width: 62.5em) {
+            padding: .5rem 1rem;
+            font-size: .9rem;
+            color: black;
+            border: solid black;
+            border-width: 1px;
+            }
+            
+        }
+        &:link,
+        &:visited {
+            
+            display: inline-block;
+            font-size: 1.5rem;
+            padding: 1rem 2rem;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all .4s;
+
+            @media only screen and (min-width: 62.5em) {
+                padding: 0;
+                color: $color-primary-blue;
+                font-size: 1rem;
+            }
+        }
+
+        
+
+    }
+
+    //ICON
+
+    &__icon {
+        position: relative;
+        margin-top: 0.8rem;
+       
+        @media only screen and (min-width: 62.5em) {
+            top: -1000px;
+        }
+
+        &,
+        &::before,
+        &::after {
+            width: 1rem;
+            height: 2px;
+            background-color: black;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all .2s;
+        }
+
+        &::before {
+            top: -.3rem;
+        }
+
+        &::after {
+            top: .3rem;
+        }
+    }
+
+    &__checkbox:checked + &__button &__icon {
+        background-color: transparent;
+    }
+
+    &__checkbox:checked + &__button &__icon::before {
+        top: 0;
+        transform: rotate(135deg);
+    }
+
+    &__checkbox:checked + &__button &__icon::after {
+        top: 0;
+        transform: rotate(-135deg);
+    }
+    
+    //Functionality
+
+    &__checkbox:checked ~ &__background {
+        transform: scale(80);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;
+    }
+    
+
+}
+
+
+.section-about {
+    display: flex;
+    flex-direction: column;
+    background-color: $color-primary-violet;
+    color: white;
+
+    @media only screen and (min-width: 62.5em) {
+        flex-direction: row-reverse;
+        padding: 0 8rem 13.5rem;
+        background-image: url(../images/bg-pattern-intro-right-desktop.svg);
+        background-position: right top;
+        background-repeat: no-repeat;
+        background-size: 25rem;
+        background-position-Y: -80PX;
+       
+    }
+   
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url(../images/bg-pattern-intro-right-mobile.svg);
+        background-repeat: no-repeat;
+        background-position: right bottom;
+        height: 1150px;
+        
+      
+     
+        
+       
+        @media only screen and (min-width: 62.5em) {
+            background-image: url('../images/bg-pattern-intro-left-desktop.svg');
+        background-position: left;
+        background-size: 10rem;
+        background-position-Y: 450PX;
+        
+      
+        
+        
+        }
+    }
+  
+    
+   
+    &__img {
+      
+        @media only screen and (min-width: 62.5em) {
+            width: 50%;
+            
+            }
+        img {
+            width: 100%;
+            @media only screen and (min-width: 62.5em) {
+                position: absolute;
+                top: 145px;
+                
+                width: 36rem;
+                float: left;
+                
+                }
+        }
+
+    }
+
+    &__text {
+        padding: 4rem 1.4rem;
+        background-image: url(../images/bg-pattern-intro-left-mobile.svg);
+        background-repeat: no-repeat;
+        z-index: 1000;
+
+        @media only screen and (min-width: 62.5em) {
+        padding: 50rem 1.2rem;
+        background-image: unset;
+        padding: 0 0;
+        width: 50%;
+        
+        
+        }
+        
+    }
+}
+
+.hr {
+    border-bottom: black solid;
+    border-width: 1px;
+    width: 40%;
+   
+    margin: 8rem auto 3rem auto;
+    border-color: $color-neutral-grayishViolet;
+    opacity: 1;
+    
+    @media only screen and (min-width: 62.5em) {
+        text-align: left;
+        width: 8rem;
+        margin: 5rem 0 3rem 0;
+
+    }
+}
+
+.hr-nondisplay {
+    display: none;
+    @media only screen and (min-width: 62.5em) {
+        display: inherit;
+
+    }
+}
+
+.features {
+    
+    @media only screen and (min-width: 62.5em) {
+       padding: 10rem 8rem 4rem 8rem;
+
+    }
+
+    &__heading {
+        margin-bottom: 4rem;
+        font-weight: 700;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+
+        &__item {
+            @media only screen and (min-width: 62.5em) {
+                padding-right: 1rem;
+         
+             }
+            
+
+            p {
+                color: $color-neutral-grayishViolet;
+                padding: .5rem 1.6rem 3rem 1.6rem;
+
+                @media only screen and (min-width: 62.5em) {
+                    padding: 0;
+             
+                 }
+                }
+    
+            img {
+                padding-bottom: 1rem;
+            }
+           }
+    }   
+}
+
+.cta {
+    display: flex;
+    flex-direction: column;
+    background-color: $color-primary-violet;
+    margin: 6rem 1rem;
+    padding: 3rem 1.2rem;
+    background-image: url(../images/bg-pattern-how-we-work-mobile.svg);
+    background-repeat: no-repeat;
+    background-position: 100% 0;
+    background-size: 9rem;
+
+    @media only screen and (min-width: 62.5em) {
+        margin: 4rem 8rem 8rem 8rem;
+        flex-direction: row;
+        align-items: center;
+        padding: 3rem 4REM;
+        background-image: url(../images/bg-pattern-how-we-work-desktop.svg);
+        background-position: right ;
+        background-size: contain;;
+     }
+    &__heading {
+        color: white;
+        padding-bottom: 2rem;
+        font-size: 2.4rem;
+
+        @media only screen and (min-width: 62.5em) {
+            width: 68%;
+            font-size: 3.8rem;
+            margin-right: auto;
+            padding-bottom: 0;
+            
+         } 
+    }
+
+    h1 {
+        @media only screen and (min-width: 62.5em) {
+            width: 68%;
+            font-size: 3.8rem;
+            margin-right: auto;
+            
+         } 
+    }
+
+   
+    &__btn {
+       vertical-align: middle;
+       width: 60%;
+       margin: 0 auto;
+       font-size: .8rem;
+       @media only screen and (min-width: 62.5em) {
+        width: inherit;
+        
+     } 
+        
+    }
+}
+
+.footer {
+    background-color: $color-neutral-light-grey;
+    padding: 6rem 0;
+    background-image: url(../images/bg-pattern-footer-mobile.svg);
+    background-repeat: no-repeat;
+    background-size: 10%;
+
+    @media only screen and (min-width: 62.5em) {
+        padding: 3rem 8rem;
+        background-image: url(../images/bg-pattern-footer-desktop.svg);
+        background-size: 40%;
+     } 
+
+    .hr {
+        margin: 0 auto;
+        width: 90%;
+        color: $color-neutral-grayishViolet;
+        opacity: .3;
+
+        @media only screen and (min-width: 62.5em) {
+            width: 100%;
+         } 
+    }
+
+    &__images {
+        display: flex;
+        flex-direction: column;
+
+        @media only screen and (min-width: 62.5em) {
+            flex-direction: row;
+            padding: 2rem 0;
+         } 
+
+        &__logo {
+            padding-bottom: 1.5rem;
+            @media only screen and (min-width: 62.5em) {
+                margin-right: auto;
+             } 
+        }
+        &__social {
+            padding-bottom: 1.5rem;
+
+            img {
+                padding: 0 .2rem;
+            }
+        }
+    }
+
+    &__info {
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: flex;
+        flex-direction: column;
+
+        @media only screen and (min-width: 62.5em) {
+            flex-direction: row;
+            justify-content: space-between;
+            padding-right: 10rem;
+         } 
+        &__block{
+
+        }
+
+        &__first-item {
+            padding: 2rem 0;
+            color: $color-neutral-grayishViolet;
+            
+        }
+
+        &__item {
+            padding: .4REM 0;
+        }
+    }
+}
+
+   
